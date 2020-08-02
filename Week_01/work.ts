@@ -40,6 +40,8 @@ function removeDuplicates(nums: number[]): number {
 
 /***
   4. 旋转数组
+  向右移动的，后面数据的位置会被占住，移动的数据，去填充空出的，用temp暂存，然后在下一轮的时候，在赋值给下一个位置
+  如果是左移动的话，就前面的数据会先被移动，向后面插入，
  */
  function rotate(nums: number[], k: number): void {
   let temp = 0
