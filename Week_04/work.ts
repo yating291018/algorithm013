@@ -96,3 +96,39 @@ function nums (board: string[][], x: number, y: number): number {
   }
   return nums[start]
 };
+
+/***
+  33. 搜索旋转排序数组
+ */
+ function search(nums: number[], target: number): number {
+  // let index = -1
+  // for (let i = 0; i < nums.length; i++) {
+  //     if (nums[i] === target) {
+  //         index = i
+  //         break
+  //     }
+  // }
+  // return index
+  let start = 0, end = nums.length - 1
+  while (start <= end) {
+      let mid = start + Math.floor((end - start) / 2)
+      if (nums[mid] === target) return mid
+      // 找左边一半
+      if (nums[mid] >= nums[start]) {
+          // 如果存在就缩小右边界
+          if (target >= nums[start] && target <= nums[mid]) {
+              end = mid - 1
+          } else {
+              start = mid + 1
+          }
+      } else { // 右边一半
+          // 如果存在就缩小左边界
+          if (target >= nums[mid] && target <= nums[end]) {
+              start = mid + 1
+          } else {
+              end = mid - 1
+          }
+      }
+  }
+  return -1
+};
